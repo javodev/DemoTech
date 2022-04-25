@@ -1,0 +1,5 @@
+insert into person(personid, age, birthdate, firstname, lastname) values(1, 5, '16/05/2016', 'Juan', 'Alvarez')
+insert into person(personid, age, birthdate, firstname, lastname) values(2, 15, '16/05/2006', 'Pedro', 'Quintana')
+insert into person(personid, age, birthdate, firstname, lastname) values(3, 12, '16/05/2009', 'Fabian', 'Chavez')
+insert into person(personid, age, birthdate, firstname, lastname) values(4, 18, '16/05/2003', 'Luis', 'Hilarious')
+insert into person(personid, age, birthdate, firstname, lastname) values(5, 28, '16/05/1994', 'Telonious', 'Dominius')

@@ -1,0 +1,118 @@
+openapi: "3.0.0"
+servers:
+   - url: 'http://localhost:8082/person'
+info:
+   description: >-
+      Api Demo Tech
+   version: 1.0.0
+   title: Swagger Api Demo
+   termsOfService: 'http://swagger.io/terms/'
+   contact:
+      email: apiteam@swagger.io
+   license:
+      name: Apache 2.0
+      url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+   - name: Client
+     description: Client Controller
+     externalDocs:
+        description: Find out more
+        url: 'http://swagger.io'
+paths:
+   /creacliente:
+      post:
+         tags:
+            - Client
+         summary: Agrega una nueva persona como cliente
+         description: ''
+         operationId: addPerson
+         responses:
+            '200':
+               description: Se realizó la operación requerida.
+               content:
+                  application/stream+json:
+                     schema:
+                        $ref: '#/components/schemas/Client'
+         requestBody:
+            $ref: '#/components/requestBodies/Client'
+         parameters: []
+   /kpideclientes:
+      get:
+         tags:
+            - Client
+         summary: Reporte con respecto a edad de Clientes
+         description: Multiple status values can be provided with comma separated strings
+         operationId: getAgeReport
+         parameters: []
+         responses:
+            '200':
+               description: successful operation
+               content:
+                  application/stream+json:
+                     schema:
+                        $ref: '#/components/schemas/AgeAverageResponse'
+            '400':
+               description: Invalid status value
+   /listclientes:
+      get:
+         tags:
+            - Client
+         summary: Listado de Clientes
+         description: Multiple status values can be provided with comma separated strings
+         operationId: listClient
+         parameters: []
+         responses:
+            '200':
+               description: successful operation
+               content:
+                  application/stream+json:
+                     schema:
+                        type: array
+                        items:
+                           $ref: '#/components/schemas/Client'
+            '400':
+               description: Invalid status value
+externalDocs:
+   description: See AsyncAPI example
+   url: 'https://mermade.github.io/shins/asyncapi.html'
+components:
+   schemas:
+      Client:
+         type: object
+         properties:
+            id:
+               type: string
+               example: 1
+            age:
+               type: string
+               example: 45
+            firstName:
+               type: string
+               example: "Pedro"
+            lastName:
+               type: string
+               example: "Perez"
+            birthDate:
+               type: string
+               example: "25/03/1995"
+      AgeAverageResponse:
+         type: object
+         properties:
+            edadPromedio:
+               type: string
+               example: 63
+            Desviación:
+               type: string
+               example: 41
+   requestBodies:
+      Client:
+         content:
+            application/json:
+               schema:
+                  $ref: '#/components/schemas/Client'
+         description: Person object that needs to be added
+         required: true
+   securitySchemes: {}
+   links: {}
+   callbacks: {}
+security: []

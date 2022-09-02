@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: apiteam@swagger.io
+  description: Api Demo Tech
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Api Demo
+  version: 1.0.0
+externalDocs:
+  description: See AsyncAPI example
+  url: https://mermade.github.io/shins/asyncapi.html
+servers:
+- url: http://localhost:8082/person
+tags:
+- description: Client Controller
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+  name: Client
+paths:
+  /creacliente:
+    post:
+      operationId: addPerson
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/Client'
+      responses:
+        "200":
+          content:
+            application/stream+json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: Se realizó la operación requerida.
+      summary: Agrega una nueva persona como cliente
+      tags:
+      - Client
+      x-contentType: application/json
+      x-accepts: application/stream+json
+  /kpideclientes:
+    get:
+      description: Multiple status values can be provided with comma separated strings
+      operationId: getAgeReport
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/stream+json:
+              schema:
+                $ref: '#/components/schemas/AgeAverageResponse'
+          description: successful operation
+        "400":
+          description: Invalid status value
+      summary: Reporte con respecto a edad de Clientes
+      tags:
+      - Client
+      x-accepts: application/stream+json
+  /listclientes:
+    get:
+      description: Multiple status values can be provided with comma separated strings
+      operationId: listClient
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/stream+json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Client'
+                type: array
+          description: successful operation
+        "400":
+          description: Invalid status value
+      summary: Listado de Clientes
+      tags:
+      - Client
+      x-accepts: application/stream+json
+components:
+  callbacks: {}
+  links: {}
+  requestBodies:
+    Client:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Client'
+      description: Person object that needs to be added
+      required: true
+  schemas:
+    Client:
+      properties:
+        id:
+          example: 1
+          format: int64
+          type: integer
+        age:
+          example: 45
+          format: int64
+          type: integer
+        firstName:
+          example: Pedro
+          type: string
+        lastName:
+          example: Perez
+          type: string
+        birthDate:
+          example: 25/03/1995
+          type: string
+      type: object
+    AgeAverageResponse:
+      properties:
+        edadPromedio:
+          example: "63"
+          type: string
+        Desviación:
+          example: "41"
+          type: string
+      type: object
+  securitySchemes: {}
+

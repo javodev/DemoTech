@@ -1,0 +1,8 @@
+README.md
+pom.xml
+src/main/java/com/demo/challengeTech/openAPI/dto/AgeAverageResponseDto.java
+src/main/java/com/demo/challengeTech/openAPI/dto/ClientDto.java
+src/main/java/com/rdemo/challengeTech/controller/ApiUtil.java
+src/main/java/com/rdemo/challengeTech/controller/CreaclienteApi.java
+src/main/java/com/rdemo/challengeTech/controller/KpideclientesApi.java
+src/main/java/com/rdemo/challengeTech/controller/ListclientesApi.java

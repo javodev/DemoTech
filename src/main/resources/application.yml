@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-3-224-125-117.compute-1.amazonaws.com:5432/d9fa3gcd7japqp?ssl=true/user=zdnnginqrhohpo/password=27d31ba6c8e5f03ceef9fd6503e548d6289643c773693dd93e3a0183f065a3bb
+    username: zdnnginqrhohpo
+    password: 27d31ba6c8e5f03ceef9fd6503e548d6289643c773693dd93e3a0183f065a3bb
+    hikary:
+      minimunIdle: 2
+      maximumPoolSize: 4
+      idleTimeout: 60000
+  profiles:
+    active: dev
+
+server:
+  port: 8081
+
+Logging.level.org.springframework: TRACE
